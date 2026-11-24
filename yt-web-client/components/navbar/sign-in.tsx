@@ -1,4 +1,4 @@
-import { signInWithGoogle, signOut } from "../../lib/firebase/auth";
+import { signInWithGoogle, signOut } from "../../lib/firebase";
 import styles from "./sign-in.module.css";
 import { User } from "firebase/auth";
 import { Fragment } from "react";

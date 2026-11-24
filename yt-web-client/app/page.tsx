@@ -1,5 +1,24 @@
+import { getVideos } from "@/lib/firebase/functions";
+import Link from "next/dist/client/link";
 import Image from "next/image";
+import styles from "./page.module.css";
 
-export default function Home() {
-  return <div>Youtube clone</div>;
+export default async function Home() {
+  const videos = await getVideos();
+
+  return (
+    <main>
+      {videos.map((video) => (
+        <Link key={video.filename} href={`/watch?v=${video.filename}`}>
+          <Image
+            src={"/thumbnail.png"}
+            alt="video"
+            width={120}
+            height={80}
+            className={styles.thumbnail}
+          />
+        </Link>
+      ))}
+    </main>
+  );
 }
