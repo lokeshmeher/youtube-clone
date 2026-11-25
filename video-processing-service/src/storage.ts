@@ -41,7 +41,7 @@ export function convertVideo(
 ): Promise<void> {
   return new Promise((resolve, reject) => {
     ffmpeg(`${localRawVideoPath}/${rawVideoName}`)
-      .outputOptions("-vf", "scale=-1:360") // Scale video to 360p while maintaining aspect ratio
+      .outputOptions("-vf", "scale=-2:360") // Scale video to 360p while maintaining aspect ratio
       .on("end", () => {
         console.log(`Video conversion completed: ${processedVideoName}`);
         resolve();
