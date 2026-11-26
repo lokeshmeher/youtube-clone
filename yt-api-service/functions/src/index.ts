@@ -105,6 +105,7 @@ export interface Video {
 export const getVideos = onCall({ maxInstances: 1 }, async () => {
   const querySnapshot = await firestore
     .collection(videoCollectionId)
+    .where("status", "==", "processed")
     .limit(10)
     .get();
   return querySnapshot.docs.map((doc) => doc.data());
