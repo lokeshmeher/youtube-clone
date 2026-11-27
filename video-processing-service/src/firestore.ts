@@ -26,7 +26,7 @@ export interface Video {
   description?: string;
 }
 
-async function getVideo(videoId: string) {
+export async function getVideo(videoId: string) {
   const snapshot = await firestore
     .collection(videoCollectionId)
     .doc(videoId)
@@ -39,9 +39,4 @@ export function setVideo(videoId: string, video: Video) {
     .collection(videoCollectionId)
     .doc(videoId)
     .set(video, { merge: true });
-}
-
-export async function isVideoNew(videoId: string) {
-  const video = await getVideo(videoId);
-  return video?.status === undefined;
 }
